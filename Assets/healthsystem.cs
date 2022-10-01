@@ -9,6 +9,9 @@ public class healthsystem : MonoBehaviour
     public int maxhealth;
     private float health;
     public Image healthbar;
+    public GameObject mainUI;
+    public Sprite deathsprite;
+    public movement check;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,26 @@ public class healthsystem : MonoBehaviour
     public void ChangeHealth(int value)
     {
         health += value;
+
+        if (health <= 0 && death.activeSelf == false)
+        {
+            if (check.horizontal == 1)
+            {
+                GetComponent<SpriteRenderer>().sprite = deathsprite;
+                mainUI.SetActive(false);
+                death.SetActive(true);
+                transform.Rotate(0, 0, -90);
+            }
+            if (check.horizontal == -1)
+            {
+                GetComponent<SpriteRenderer>().sprite = deathsprite;
+                mainUI.SetActive(false);
+                death.SetActive(true);
+                transform.Rotate(0, 0, 90);
+            }
+
+
+        }
 
         RenderHealth();
     }
@@ -52,9 +75,6 @@ public class healthsystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
-        {
-            death.SetActive(true);
-        }
+        
     }
 }

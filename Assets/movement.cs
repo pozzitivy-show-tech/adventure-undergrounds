@@ -80,6 +80,12 @@ public class movement : MonoBehaviour
 			}
 			
 		}
+		if(joystick.gameObject.transform.parent.gameObject.activeSelf == false)
+        {
+
+			horizontal = 0;
+			vertical = 0;
+        }
 	}
 
 
