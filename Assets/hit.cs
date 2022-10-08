@@ -4,37 +4,17 @@ using UnityEngine;
 
 public class hit : MonoBehaviour
 {
-    public int i;
-    public bool ishit;
-    public GameObject blue;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        blue.SetActive(false);
+        animator = GetComponent<Animator>();
         
-    }
-
-    public void FixedUpdate()
-    {
-        if(ishit == true)
-        {
-            Debug.Log("hit");
-            while (i <= 3)
-            {
-                blue.SetActive(true);
-                i+=1;
-            }
-            blue.SetActive(false);
-            i = 0;
-            
-        }
-        ishit = false;
     }
 
     // Update is called once per frame
-    public void Swing()
+    public void SwordHit()
     {
-        ishit = true;
-        
+        animator.SetTrigger("hit");
     }
 }
